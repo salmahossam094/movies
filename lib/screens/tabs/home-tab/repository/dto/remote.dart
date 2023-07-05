@@ -28,8 +28,14 @@ class RemoteRepo extends BaseRepository {
 
   @override
   Future<http.Response>? getMovieDetails(num movieId) {
-    Uri url = Uri.https(
-        Constants.BASE, '/3/movie$movieId', {"api_key": Constants.APIKEY});
-    return http.get(url);
+    // TODO: implement getMovieDetails
+    throw UnimplementedError();
   }
+
+  // @override
+  // Future<http.Response>? getMovieDetails(num movieId) {
+  //   Uri url = Uri.https(
+  //       Constants.BASE, '/3/movie$movieId', {"api_key": Constants.APIKEY});
+  //   return http.get(url);
+  // }
 }

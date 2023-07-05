@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies/bloc_observer.dart';
 import 'package:movies/layout/home_layout.dart';
-import 'package:movies/screens/movie_details.dart';
+import 'package:movies/screens/movie_details/movie_details.dart';
 import 'package:movies/shared/styles/my_theme.dart';
 
 void main() {

@@ -1,4 +1,6 @@
+import 'package:movies/model/MovieDetailsModel.dart';
 import '../../../../model/PopularModel.dart';
+import '../../../../model/TopRated.dart';
 
 abstract class HomeState {}
 
@@ -22,7 +24,11 @@ class GetHomePopularErrorState extends HomeState {
 
 class GetHomeNewLoadingState extends HomeState {}
 
-class GetHomeNewSuccessState extends HomeState {}
+class GetHomeNewSuccessState extends HomeState {
+  List<Results> newRelease;
+
+  GetHomeNewSuccessState(this.newRelease);
+}
 
 class GetHomeNewErrorState extends HomeState {
   String error;
@@ -32,7 +38,11 @@ class GetHomeNewErrorState extends HomeState {
 
 class GetHomeTopLoadingState extends HomeState {}
 
-class GetHomeTopSuccessState extends HomeState {}
+class GetHomeTopSuccessState extends HomeState {
+   List<ResultsTop> resultsTop;
+
+  GetHomeTopSuccessState(this.resultsTop);
+}
 
 class GetHomeTopErrorState extends HomeState {
   String error;
@@ -50,9 +60,15 @@ class GetHomeSimilarErrorState extends HomeState {
   GetHomeSimilarErrorState(this.error);
 }
 
-class GetHomeMovieLoadingState extends HomeState {}
+class GetHomeMovieLoadingState extends HomeState {
 
-class GetHomeMovieSuccessState extends HomeState {}
+}
+
+class GetHomeMovieSuccessState extends HomeState {
+  MovieDetailsModel movieDetailsModel;
+
+  GetHomeMovieSuccessState(this.movieDetailsModel);
+}
 
 class GetHomeMovieErrorState extends HomeState {
   String error;

@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies/shared/styles/app_colors.dart';
 
-import '../../shared/styles/text_styles.dart';
-import '../tabs/home-tab/cubit/cubit.dart';
+import '../../../../shared/styles/text_styles.dart';
+import '../../../movie_details/movie_details.dart';
+import '../cubit/cubit.dart';
 import 'movie-widget.dart';
 
 class TopRated extends StatelessWidget {
@@ -49,13 +50,14 @@ class TopRated extends StatelessWidget {
                               alignment: Alignment.center,
                               child: InkWell(
                                 onTap: () {
-                                  // Navigator.pushNamed(
-                                  //   context,
-                                  //   MovieDetails.routeName,
-                                  // );
+                                  Navigator.pushNamed(
+                                      context, MovieDetails.routeName,
+                                      arguments: HomeCubit.get(context)
+                                          .topRated[index]
+                                          .id);
                                 },
                                 child: ClipRRect(
-                                   borderRadius: BorderRadius.circular(18.r),
+                                  borderRadius: BorderRadius.circular(18.r),
                                   child: MovieWidget(HomeCubit.get(context)
                                       .topRated[index]
                                       .posterPath!),

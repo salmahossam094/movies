@@ -11,11 +11,10 @@ import 'package:movies/screens/tabs/home-tab/repository/repo.dart';
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit(this.baseRepository) : super(HomeInitState());
   List<Results> popular = [];
-  List<NewRResults> newRe = [];
+  List<Results> newRe = [];
   List<ResultsTop> topRated = [];
-
-  // List<ResultsMovieDetails> movieDetails = [];
   MovieDetailsModel movieDetailsModel = MovieDetailsModel();
+
   BaseRepository baseRepository;
 
   static HomeCubit get(context) => BlocProvider.of(context);
@@ -42,7 +41,7 @@ class HomeCubit extends Cubit<HomeState> {
       var responseJson = jsonDecode(value.body);
       NewRelease newRelease = NewRelease.fromJson(responseJson);
       newRe = newRelease.results ?? [];
-      emit(GetHomeNewSuccessState());
+      emit(GetHomeNewSuccessState(newRe));
     }).catchError((e) {
       emit(GetHomeNewErrorState(e));
     });
@@ -54,7 +53,7 @@ class HomeCubit extends Cubit<HomeState> {
       var responseJson = jsonDecode(value.body);
       TopRated topRatedM = TopRated.fromJson(responseJson);
       topRated = topRatedM.results ?? [];
-      emit(GetHomeTopSuccessState());
+      emit(GetHomeTopSuccessState(topRated));
     }).catchError((e) {
       emit(GetHomeTopErrorState(e));
     });
@@ -65,8 +64,7 @@ class HomeCubit extends Cubit<HomeState> {
     baseRepository.getMovieDetails(movieId)!.then((value) {
       var responseJson = jsonDecode(value.body);
       movieDetailsModel = MovieDetailsModel.fromJson(responseJson);
-      // movieDetails = movieDetailsModel.results ?? [];
-      emit(GetHomeMovieSuccessState());
+      emit(GetHomeMovieSuccessState(movieDetailsModel));
     }).catchError((e) {
       emit(GetHomeMovieErrorState(e));
     });

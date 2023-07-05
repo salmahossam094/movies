@@ -2,10 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies/screens/movie_details.dart';
+import 'package:movies/screens/movie_details/movie_details.dart';
 
-import '../../shared/styles/app_colors.dart';
-import '../tabs/home-tab/cubit/cubit.dart';
+import '../../../../shared/styles/app_colors.dart';
+import '../cubit/cubit.dart';
 import 'movie-widget.dart';
 
 class PopularWidget extends StatelessWidget {
@@ -37,6 +37,8 @@ class PopularWidget extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(10.0),
                         child: ClipRRect(
+
+
                           borderRadius: BorderRadius.circular(20.r),
                           child: CachedNetworkImage(
                             height: 450.h,

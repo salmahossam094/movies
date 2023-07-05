@@ -4,9 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies/screens/tabs/home-tab/cubit/cubit.dart';
 import 'package:movies/screens/tabs/home-tab/cubit/state.dart';
 import 'package:movies/screens/tabs/home-tab/repository/dto/remote.dart';
-import 'package:movies/screens/widgets/popular_widget.dart';
-import 'package:movies/screens/widgets/top_rated.dart';
-import 'package:movies/screens/widgets/upcoming_widget.dart';
+import 'package:movies/screens/tabs/home-tab/widgets/popular_widget.dart';
+import 'package:movies/screens/tabs/home-tab/widgets/top_rated.dart';
+import 'package:movies/screens/tabs/home-tab/widgets/upcoming_widget.dart';
 
 import '../../../shared/styles/app_colors.dart';
 
@@ -26,7 +26,8 @@ class HomeTab extends StatelessWidget {
             child:
                 BlocConsumer<HomeCubit, HomeState>(listener: (context, state) {
               if (state is GetHomePopularLoadingState ||
-                  state is GetHomeNewLoadingState) {
+                  state is GetHomeNewLoadingState ||
+                  state is GetHomeMovieLoadingState) {
                 showDialog(
                   context: context,
                   builder: (context) => const AlertDialog(
@@ -65,6 +66,18 @@ class HomeTab extends StatelessWidget {
                 );
               }
               if (state is GetHomeNewSuccessState) {}
+              if (state is GetHomeMovieErrorState) {
+                showDialog(
+                  context: context,
+                  builder: (context) => const AlertDialog(
+                    title: Text('Error'),
+                    content: Text('connection'),
+                  ),
+                );
+              }
+              if (state is GetHomeMovieSuccessState) {
+
+              }
             }, builder: (context, state) {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
