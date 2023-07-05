@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies/model/MovieDetailsModel.dart';
 import 'package:movies/model/NewRelease.dart';
 import 'package:movies/model/PopularModel.dart';
 import 'package:movies/model/TopRated.dart';
@@ -12,6 +13,9 @@ class HomeCubit extends Cubit<HomeState> {
   List<Results> popular = [];
   List<NewRResults> newRe = [];
   List<ResultsTop> topRated = [];
+
+  // List<ResultsMovieDetails> movieDetails = [];
+  MovieDetailsModel movieDetailsModel = MovieDetailsModel();
   BaseRepository baseRepository;
 
   static HomeCubit get(context) => BlocProvider.of(context);
@@ -26,7 +30,7 @@ class HomeCubit extends Cubit<HomeState> {
         return;
       }
       popular = popularModel.results ?? [];
-      emit(GetHomePopularSuccessState());
+      emit(GetHomePopularSuccessState(popular));
     }).catchError((e) {
       emit(GetHomePopularErrorState(e));
     });
@@ -53,6 +57,18 @@ class HomeCubit extends Cubit<HomeState> {
       emit(GetHomeTopSuccessState());
     }).catchError((e) {
       emit(GetHomeTopErrorState(e));
+    });
+  }
+
+  void getMovieDetails(num movieId) {
+    emit(GetHomeMovieLoadingState());
+    baseRepository.getMovieDetails(movieId)!.then((value) {
+      var responseJson = jsonDecode(value.body);
+      movieDetailsModel = MovieDetailsModel.fromJson(responseJson);
+      // movieDetails = movieDetailsModel.results ?? [];
+      emit(GetHomeMovieSuccessState());
+    }).catchError((e) {
+      emit(GetHomeMovieErrorState(e));
     });
   }
 }

@@ -10,7 +10,7 @@ class HomeLayoutCubit extends Cubit<HomeLayoutStates> {
   HomeLayoutCubit() : super(HomeLayoutInitState());
 
   static HomeLayoutCubit get(context) => BlocProvider.of(context);
-  List<Widget> tabs = [HomeTab(), SearchTab(), BrowseTab(), WatchListTab()];
+  List<Widget> tabs = [const HomeTab(), SearchTab(), const BrowseTab(), const WatchListTab()];
 
 int selectedIndex=0;
   changeSelectedIndex(value) {

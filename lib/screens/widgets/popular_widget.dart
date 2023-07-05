@@ -27,7 +27,7 @@ class PopularWidget extends StatelessWidget {
                   child: InkWell(
                     onTap: () {
                       Navigator.pushNamed(context, MovieDetails.routeName,
-                          arguments: HomeCubit.get(context).popular[index]);
+                          arguments: HomeCubit.get(context).popular[index].id);
                     },
                     child: Card(
                       elevation: 0,

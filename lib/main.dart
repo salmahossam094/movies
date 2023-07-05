@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         initialRoute: HomeLayout.routeName,
         routes: {
-          HomeLayout.routeName: (context) => HomeLayout(),
+          HomeLayout.routeName: (context) => const HomeLayout(),
           MovieDetails.routeName: (context) => MovieDetails()
         },
         theme: MyThemeData.lightTheme,

@@ -10,27 +10,33 @@ class MovieWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        CachedNetworkImage(
-          height: 199.h,
-          width: 129.w,
-          fit: BoxFit.fill,
-          imageUrl: 'https://image.tmdb.org/t/p/original$imageName',
-          progressIndicatorBuilder: (context, url, downloadProgress) => Center(
-            child: CircularProgressIndicator(value: downloadProgress.progress),
+    return SizedBox(
+      child: Stack(
+        children: [
+          CachedNetworkImage(
+            height: 199.h,
+            width: 129.w,
+            fit: BoxFit.cover,
+            imageUrl: 'https://image.tmdb.org/t/p/original$imageName',
+            progressIndicatorBuilder: (context, url, downloadProgress) =>
+                Center(
+              child: CircularProgressIndicator(
+                value: downloadProgress.progress,
+                color: AppColor.secondary,
+              ),
+            ),
+            errorWidget: (context, url, error) => const Icon(Icons.error),
           ),
-          errorWidget: (context, url, error) => const Icon(Icons.error),
-        ),
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            Icons.bookmark_add,
-            color: AppColor.grey,
-            size: 30,
-          ),
-        )
-      ],
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.bookmark_add,
+              color: AppColor.grey,
+              size: 30,
+            ),
+          )
+        ],
+      ),
     );
   }
 }

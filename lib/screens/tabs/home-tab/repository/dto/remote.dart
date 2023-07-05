@@ -21,13 +21,15 @@ class RemoteRepo extends BaseRepository {
 
   @override
   Future<http.Response>? getTopMovies() {
-    Uri url = Uri.https(Constants.BASE, '/3/movie/top_rated', {"api_key": Constants.APIKEY});
+    Uri url = Uri.https(
+        Constants.BASE, '/3/movie/top_rated', {"api_key": Constants.APIKEY});
     return http.get(url);
   }
 
   @override
-  Future<http.Response>? getMovieDetails(int movieId) {
-    Uri url = Uri.https(Constants.BASE, '/3/movie$movieId', {"api_key": Constants.APIKEY});
+  Future<http.Response>? getMovieDetails(num movieId) {
+    Uri url = Uri.https(
+        Constants.BASE, '/3/movie$movieId', {"api_key": Constants.APIKEY});
     return http.get(url);
   }
 }

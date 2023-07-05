@@ -1,9 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies/screens/movie_details.dart';
 import 'package:movies/shared/styles/app_colors.dart';
-
 import '../../shared/styles/text_styles.dart';
 import '../tabs/home-tab/cubit/cubit.dart';
 import 'movie-widget.dart';
@@ -36,13 +34,13 @@ class UpComing extends StatelessWidget {
                   children: [
                     InkWell(
                       onTap: () {
-                        Navigator.pushNamed(
-                          context,
-                          MovieDetails.routeName,
-                        );
+                        // Navigator.pushNamed(
+                        //   context,
+                        //   MovieDetails.routeName,
+                        // );
                       },
                       child: MovieWidget(
-                          HomeCubit.get(context).newRe[index].posterPath ?? ''),
+                          HomeCubit.get(context).newRe[index].posterPath!),
                     )
                   ],
                 );

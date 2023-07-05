@@ -1,15 +1,21 @@
+import '../../../../model/PopularModel.dart';
+
 abstract class HomeState {}
 
 class HomeInitState extends HomeState {}
 
 class GetHomePopularLoadingState extends HomeState {}
 
-class GetHomePopularSuccessState extends HomeState {}
+class GetHomePopularSuccessState extends HomeState {
+  List<Results> result;
+
+  GetHomePopularSuccessState(this.result);
+}
 
 class GetHomePopularErrorConnectionState extends HomeState {}
 
 class GetHomePopularErrorState extends HomeState {
-  var error;
+  String error;
 
   GetHomePopularErrorState(this.error);
 }
@@ -19,7 +25,7 @@ class GetHomeNewLoadingState extends HomeState {}
 class GetHomeNewSuccessState extends HomeState {}
 
 class GetHomeNewErrorState extends HomeState {
-  var error;
+  String error;
 
   GetHomeNewErrorState(this.error);
 }
@@ -29,7 +35,7 @@ class GetHomeTopLoadingState extends HomeState {}
 class GetHomeTopSuccessState extends HomeState {}
 
 class GetHomeTopErrorState extends HomeState {
-  var error;
+  String error;
 
   GetHomeTopErrorState(this.error);
 }
