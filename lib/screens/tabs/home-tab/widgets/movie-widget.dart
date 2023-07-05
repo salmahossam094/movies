@@ -17,7 +17,8 @@ class MovieWidget extends StatelessWidget {
             height: 199.h,
             width: 129.w,
             fit: BoxFit.cover,
-            imageUrl: 'https://image.tmdb.org/t/p/original$imageName',
+            imageUrl:imageName.isEmpty?'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPple0XLVI1C5Qk6WZRtHEvgc8Ns7_CW09qeC3IlzUIw&s'
+                : 'https://image.tmdb.org/t/p/original$imageName',
             progressIndicatorBuilder: (context, url, downloadProgress) =>
                 Center(
               child: CircularProgressIndicator(
