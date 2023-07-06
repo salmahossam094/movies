@@ -21,7 +21,6 @@ class BrowseCubit extends Cubit<BrowseStates> {
       var responseJson = jsonDecode(value.body);
       BrowseModel browseModel = BrowseModel.fromJson(responseJson);
       categories = browseModel.genres ?? [];
-
       emit(BrowseSuccessState());
     }).catchError((e) {
       emit(BrowseErrorState(e.toString()));
