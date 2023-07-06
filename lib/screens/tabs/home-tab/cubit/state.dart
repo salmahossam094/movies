@@ -1,6 +1,6 @@
-import 'package:movies/model/MovieDetailsModel.dart';
-import '../../../../model/PopularModel.dart';
-import '../../../../model/TopRated.dart';
+import 'package:movies/model/movie_details_models/MovieDetailsModel.dart';
+import '../../../../model/home_tab_models/PopularModel.dart';
+import '../../../../model/home_tab_models/TopRated.dart';
 
 abstract class HomeState {}
 

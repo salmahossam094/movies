@@ -5,7 +5,7 @@ import 'package:movies/shared/styles/app_colors.dart';
 
 import '../../../model/SearchModel.dart';
 import '../../../shared/styles/text_styles.dart';
-import 'api_manager.dart';
+import '../../api_manager.dart';
 
 class SearchTab extends StatefulWidget {
   @override
@@ -153,8 +153,8 @@ class _SearchTabState extends State<SearchTab> {
                             );
                           },
                           separatorBuilder: (BuildContext context, int index) =>
-                              Padding(
-                            padding: const EdgeInsets.all(8.0),
+                              const Padding(
+                            padding: EdgeInsets.all(8.0),
                             child: Divider(
                               indent: 25,
                               endIndent: 25,

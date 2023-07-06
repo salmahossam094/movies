@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies/layout/bloc/states.dart';
-import 'package:movies/screens/tabs/browse_tab.dart';
+import 'package:movies/screens/tabs/browse/browse_tab.dart';
 import 'package:movies/screens/tabs/home-tab/home_tab.dart';
 import 'package:movies/screens/tabs/search_tab/search_tab.dart';
 import 'package:movies/screens/tabs/watchlist_tab.dart';

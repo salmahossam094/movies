@@ -1,4 +1,4 @@
-import 'package:movies/model/PopularModel.dart';
+import 'package:movies/model/home_tab_models/PopularModel.dart';
 
 class NewRelease {
   NewRelease(

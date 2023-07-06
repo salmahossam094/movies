@@ -2,7 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies/screens/movie_details/movie_details.dart';
-import 'package:movies/screens/tabs/search_tab/api_manager.dart';
+import 'package:movies/screens/api_manager.dart';
 
 import '../../shared/styles/app_colors.dart';
 import '../../shared/styles/text_styles.dart';

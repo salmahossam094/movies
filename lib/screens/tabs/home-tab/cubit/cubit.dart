@@ -1,10 +1,10 @@
 import 'dart:convert';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies/model/MovieDetailsModel.dart';
-import 'package:movies/model/NewRelease.dart';
-import 'package:movies/model/PopularModel.dart';
-import 'package:movies/model/TopRated.dart';
+import 'package:movies/model/movie_details_models/MovieDetailsModel.dart';
+import 'package:movies/model/home_tab_models/NewRelease.dart';
+import 'package:movies/model/home_tab_models/PopularModel.dart';
+import 'package:movies/model/home_tab_models/TopRated.dart';
 import 'package:movies/screens/tabs/home-tab/cubit/state.dart';
 import 'package:movies/screens/tabs/home-tab/repository/repo.dart';
 

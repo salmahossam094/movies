@@ -1,10 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies/model/MovieDetailsModel.dart';
+import 'package:movies/model/movie_details_models/MovieDetailsModel.dart';
 import 'package:movies/screens/movie_details/similar.dart';
 import 'package:movies/screens/tabs/home-tab/widgets/movie-widget.dart';
-import 'package:movies/screens/tabs/search_tab/api_manager.dart';
+import 'package:movies/screens/api_manager.dart';
 import 'package:movies/shared/styles/app_colors.dart';
 
 import '../../shared/styles/text_styles.dart';
@@ -34,7 +34,7 @@ class MovieDetails extends StatelessWidget {
           );
         }
         var results = snapshot.data;
-        print(results!.title);
+
         overview = results!.overview!.split(',');
         return Scaffold(
           backgroundColor: Colors.black,
