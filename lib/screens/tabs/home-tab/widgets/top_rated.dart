@@ -17,7 +17,7 @@ class TopRated extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: AppColor.primary,
-      padding: const EdgeInsets.all(8),
+      padding: const EdgeInsets.all(8).h,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -105,6 +105,7 @@ class TopRated extends StatelessWidget {
                                             .topRated[index]
                                             .id);
                                     FirebaseFunctions.addMovieToFire(movie);
+                                    
                                   },
                                       HomeCubit.get(context)
                                           .topRated[index]

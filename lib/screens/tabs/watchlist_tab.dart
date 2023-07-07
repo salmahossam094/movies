@@ -46,28 +46,35 @@ class _WatchListTabState extends State<WatchListTab> {
               List<WatchListModel> movie =
                   snapshot.data?.docs.map((e) => e.data()).toList() ?? [];
               return movie.isEmpty
-                  ? Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Icon(
-                          Icons.local_movies,
-                          size: 100,
-                          color: Colors.grey,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(20.0),
-                          child: Text(
-                            'No movies ',
-                            style: quick20White(),
+                  ? Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            height: 200.h,
                           ),
-                        )
-                      ],
+                          const Icon(
+                            Icons.local_movies,
+                            size: 100,
+                            color: Colors.grey,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(20.0),
+                            child: Text(
+                              'No movies ',
+                              style: quick20White(),
+                            ),
+                          )
+                        ],
+                      ),
                     )
                   : Expanded(
                       child: ListView.separated(
                         itemCount: movie.length,
                         itemBuilder: (context, index) => InkWell(
-                          onTap: () => Navigator.pushReplacementNamed(context, MovieDetails.routeName,arguments: movie[index].id),
+                          onTap: () => Navigator.pushNamed(
+                              context, MovieDetails.routeName,
+                              arguments: movie[index].id),
                           child: Row(
                             children: [
                               CachedNetworkImage(

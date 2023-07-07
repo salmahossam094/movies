@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movies/screens/movie_details/movie_details.dart';
 import 'package:movies/shared/styles/app_colors.dart';
 
 import '../../../model/SearchModel.dart';
@@ -98,59 +99,62 @@ class _SearchTabState extends State<SearchTab> {
                         child: ListView.separated(
                           itemCount: result.length,
                           itemBuilder: (context, index) {
-                            return Row(
-                              children: [
-                                CachedNetworkImage(
-                                  height: 95.h,
-                                  width: 135.w,
-                                  fit: BoxFit.cover,
-                                  imageUrl:
-                                      'https://image.tmdb.org/t/p/original${result[index].backdropPath}',
-                                  progressIndicatorBuilder:
-                                      (context, url, downloadProgress) =>
-                                          Center(
-                                    child: CircularProgressIndicator(
-                                      value: downloadProgress.progress,
-                                      color: AppColor.secondary,
+                            return InkWell(
+                              onTap: () => Navigator.pushNamed(context, MovieDetails.routeName,arguments: result[index].id),
+                              child: Row(
+                                children: [
+                                  CachedNetworkImage(
+                                    height: 95.h,
+                                    width: 135.w,
+                                    fit: BoxFit.cover,
+                                    imageUrl:
+                                        'https://image.tmdb.org/t/p/original${result[index].backdropPath}',
+                                    progressIndicatorBuilder:
+                                        (context, url, downloadProgress) =>
+                                            Center(
+                                      child: CircularProgressIndicator(
+                                        value: downloadProgress.progress,
+                                        color: AppColor.secondary,
+                                      ),
                                     ),
+                                    errorWidget: (context, url, error) =>
+                                        const Icon(Icons.error),
                                   ),
-                                  errorWidget: (context, url, error) =>
-                                      const Icon(Icons.error),
-                                ),
-                                SizedBox(
-                                  width: 10.w,
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      result[index].title!,
-                                      style: quick20White().copyWith(
-                                          fontWeight: FontWeight.w100,
-                                          fontSize: 14.sp),
-                                      maxLines: 1,
-                                      overflow: TextOverflow.clip,
-                                      textScaleFactor: 0.81,
-                                    ),
-                                    SizedBox(
-                                      height: 3.h,
-                                    ),
-                                    Text(
-                                      result[index].releaseDate!,
-                                      style: roboto8gray()
-                                          .copyWith(fontSize: 13.sp),
-                                    ),
-                                    SizedBox(
-                                      height: 3.h,
-                                    ),
-                                    Text(
-                                      result[index].originalLanguage!,
-                                      style: roboto8gray()
-                                          .copyWith(fontSize: 13.sp),
-                                    )
-                                  ],
-                                )
-                              ],
+                                  SizedBox(
+                                    width: 10.w,
+                                  ),
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        result[index].title!,
+                                        style: quick20White().copyWith(
+                                            fontWeight: FontWeight.w100,
+                                            fontSize: 14.sp),
+                                        maxLines: 1,
+                                        overflow: TextOverflow.clip,
+                                        textScaleFactor: 0.81,
+                                      ),
+                                      SizedBox(
+                                        height: 3.h,
+                                      ),
+                                      Text(
+                                        result[index].releaseDate!,
+                                        style: roboto8gray()
+                                            .copyWith(fontSize: 13.sp),
+                                      ),
+                                      SizedBox(
+                                        height: 3.h,
+                                      ),
+                                      Text(
+                                        result[index].originalLanguage!,
+                                        style: roboto8gray()
+                                            .copyWith(fontSize: 13.sp),
+                                      )
+                                    ],
+                                  )
+                                ],
+                              ),
                             );
                           },
                           separatorBuilder: (BuildContext context, int index) =>

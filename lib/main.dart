@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies/bloc_observer.dart';
 import 'package:movies/layout/home_layout.dart';
 import 'package:movies/screens/movie_details/movie_details.dart';
+import 'package:movies/screens/splash_screen.dart';
 import 'package:movies/screens/tabs/browse/movies_with_categories.dart';
 import 'package:movies/shared/styles/my_theme.dart';
 
@@ -32,10 +33,11 @@ class MyApp extends StatelessWidget {
         builder: (BuildContext context, Widget? child) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
-            initialRoute: HomeLayout.routeName,
+            initialRoute: SplashScreen.routeName,
             routes: {
               HomeLayout.routeName: (context) => const HomeLayout(),
               MovieDetails.routeName: (context) => MovieDetails(),
+              SplashScreen.routeName: (context) => SplashScreen(),
               MovieWithCategoriesScreen.routeName: (context) =>
                   MovieWithCategoriesScreen()
             },
