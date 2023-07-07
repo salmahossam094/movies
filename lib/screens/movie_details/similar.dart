@@ -1,8 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movies/api/api_manager.dart';
+import 'package:movies/firebase/firebase_functions.dart';
+import 'package:movies/model/watchlist_model.dart';
 import 'package:movies/screens/movie_details/movie_details.dart';
-import 'package:movies/screens/api_manager.dart';
 
 import '../../shared/styles/app_colors.dart';
 import '../../shared/styles/text_styles.dart';
@@ -74,7 +76,33 @@ class MoreLikeThis extends StatelessWidget {
                                         borderRadius:
                                             BorderRadius.circular(18.r),
                                         child: MovieWidget(
-                                            similar[index].posterPath ?? ''),
+                                            similar[index].posterPath ?? '',
+                                            () {
+                                          WatchListModel movie = WatchListModel(
+                                              id: similar[index].id,
+                                              title: similar[index].title,
+                                              adult: similar[index].adult,
+                                              backdropPath:
+                                                  similar[index].backdropPath,
+                                              originalLanguage: similar[index]
+                                                  .originalLanguage,
+                                              originalTitle:
+                                                  similar[index].originalTitle,
+                                              overview: similar[index].overview,
+                                              popularity:
+                                                  similar[index].popularity,
+                                              posterPath:
+                                                  similar[index].posterPath,
+                                              releaseDate:
+                                                  similar[index].releaseDate,
+                                              video: similar[index].video,
+                                              voteAverage:
+                                                  similar[index].voteAverage,
+                                              voteCount:
+                                                  similar[index].voteCount);
+                                          FirebaseFunctions.addMovieToFire(
+                                              movie);
+                                        },similar[index].id.toString()),
                                       ),
                                     ),
                                   ),

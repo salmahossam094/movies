@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies/model/BrowseModel.dart';
-import 'package:movies/screens/api_manager.dart';
+import 'package:movies/api/api_manager.dart';
 import 'package:movies/screens/movie_details/movie_details.dart';
 import 'package:movies/shared/styles/app_colors.dart';
 

@@ -75,3 +75,4 @@ class GetHomeMovieErrorState extends HomeState {
 
   GetHomeMovieErrorState(this.error);
 }
+class PopularWatchlistChangedState extends HomeState{}

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies/shared/styles/app_colors.dart';
 
+import '../../../../model/watchlist_model.dart';
 import '../../../../shared/styles/text_styles.dart';
 import '../../../movie_details/movie_details.dart';
 import '../cubit/cubit.dart';
@@ -58,9 +59,55 @@ class TopRated extends StatelessWidget {
                                 },
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(18.r),
-                                  child: MovieWidget(HomeCubit.get(context)
-                                      .topRated[index]
-                                      .posterPath!),
+                                  child: MovieWidget(
+                                      HomeCubit.get(context)
+                                          .topRated[index]
+                                          .posterPath!, () {
+                                    WatchListModel movie = WatchListModel(
+                                        title: HomeCubit.get(context)
+                                            .topRated[index]
+                                            .title,
+                                        adult: HomeCubit.get(context)
+                                            .topRated[index]
+                                            .adult,
+                                        backdropPath: HomeCubit.get(context)
+                                            .topRated[index]
+                                            .backdropPath,
+                                        originalLanguage: HomeCubit.get(context)
+                                            .topRated[index]
+                                            .originalLanguage,
+                                        originalTitle: HomeCubit.get(context)
+                                            .topRated[index]
+                                            .originalTitle,
+                                        overview: HomeCubit.get(context)
+                                            .topRated[index]
+                                            .overview,
+                                        popularity: HomeCubit.get(context)
+                                            .topRated[index]
+                                            .popularity,
+                                        posterPath: HomeCubit.get(context)
+                                            .topRated[index]
+                                            .posterPath,
+                                        releaseDate: HomeCubit.get(context)
+                                            .topRated[index]
+                                            .releaseDate,
+                                        video: HomeCubit.get(context)
+                                            .topRated[index]
+                                            .video,
+                                        voteAverage: HomeCubit.get(context)
+                                            .topRated[index]
+                                            .voteAverage,
+                                        voteCount: HomeCubit.get(context)
+                                            .topRated[index]
+                                            .voteCount,
+                                        id: HomeCubit.get(context)
+                                            .topRated[index]
+                                            .id);
+                                  },
+                                      HomeCubit.get(context)
+                                          .topRated[index]
+                                          .id
+                                          .toString()),
                                 ),
                               ),
                             ),

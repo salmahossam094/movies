@@ -2,6 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movies/firebase/firebase_functions.dart';
+import 'package:movies/model/watchlist_model.dart';
 import 'package:movies/screens/movie_details/movie_details.dart';
 
 import '../../../../shared/styles/app_colors.dart';
@@ -37,8 +39,6 @@ class PopularWidget extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(10.0),
                         child: ClipRRect(
-
-
                           borderRadius: BorderRadius.circular(20.r),
                           child: CachedNetworkImage(
                             height: 450.h,
@@ -71,7 +71,40 @@ class PopularWidget extends StatelessWidget {
                   child: Row(
                     children: [
                       MovieWidget(
-                          HomeCubit.get(context).popular[index].posterPath!),
+                          HomeCubit.get(context).popular[index].posterPath!,
+                          () {
+                        WatchListModel movie = WatchListModel(
+                            voteCount:
+                                HomeCubit.get(context).popular[index].voteCount,
+                            voteAverage: HomeCubit.get(context)
+                                .popular[index]
+                                .voteAverage,
+                            video: HomeCubit.get(context).popular[index].video,
+                            releaseDate: HomeCubit.get(context)
+                                .popular[index]
+                                .releaseDate,
+                            posterPath: HomeCubit.get(context)
+                                .popular[index]
+                                .posterPath,
+                            popularity: HomeCubit.get(context)
+                                .popular[index]
+                                .popularity,
+                            overview:
+                                HomeCubit.get(context).popular[index].overview,
+                            originalTitle: HomeCubit.get(context)
+                                .popular[index]
+                                .originalTitle,
+                            originalLanguage: HomeCubit.get(context)
+                                .popular[index]
+                                .originalLanguage,
+                            backdropPath: HomeCubit.get(context)
+                                .popular[index]
+                                .backdropPath,
+                            adult: HomeCubit.get(context).popular[index].adult,
+                            title: HomeCubit.get(context).popular[index].title,
+                            id: HomeCubit.get(context).popular[index].id);
+                        FirebaseFunctions.addMovieToFire(movie);
+                      },HomeCubit.get(context).popular[index].id.toString()),
                     ],
                   ),
                 ),

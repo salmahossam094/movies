@@ -1,10 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movies/api/api_manager.dart';
+import 'package:movies/firebase/firebase_functions.dart';
 import 'package:movies/model/movie_details_models/MovieDetailsModel.dart';
+import 'package:movies/model/watchlist_model.dart';
 import 'package:movies/screens/movie_details/similar.dart';
 import 'package:movies/screens/tabs/home-tab/widgets/movie-widget.dart';
-import 'package:movies/screens/api_manager.dart';
 import 'package:movies/shared/styles/app_colors.dart';
 
 import '../../shared/styles/text_styles.dart';
@@ -121,7 +123,24 @@ class MovieDetails extends StatelessWidget {
                   color: AppColor.primary,
                   child: Row(
                     children: [
-                      SizedBox(child: MovieWidget(results.posterPath ?? '')),
+                      SizedBox(
+                          child: MovieWidget(results.posterPath ?? '', () {
+                        WatchListModel movie = WatchListModel(
+                            id: results.id,
+                            title: results.title,
+                            adult: results.adult,
+                            backdropPath: results.backdropPath,
+                            originalLanguage: results.originalLanguage,
+                            originalTitle: results.originalTitle,
+                            overview: results.overview,
+                            popularity: results.popularity,
+                            posterPath: results.posterPath,
+                            releaseDate: results.releaseDate,
+                            video: results.video,
+                            voteAverage: results.voteAverage,
+                            voteCount: results.voteCount);
+                        FirebaseFunctions.addMovieToFire(movie);
+                      },results.id.toString())),
                       SizedBox(
                         width: 11.w,
                       ),
@@ -143,7 +162,8 @@ class MovieDetails extends StatelessWidget {
                                       padding: const EdgeInsets.all(5),
                                       margin: const EdgeInsets.all(5),
                                       decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(10),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
                                           border: Border.all(
                                               color: Colors.white70, width: 1)),
                                       child: FittedBox(
@@ -151,7 +171,8 @@ class MovieDetails extends StatelessWidget {
                                         child: Text(
                                           results.genres![index].name!,
                                           style: roboto8gray().copyWith(
-                                              color: Colors.white, fontSize: 10),
+                                              color: Colors.white,
+                                              fontSize: 10),
                                         ),
                                       )),
                             )),

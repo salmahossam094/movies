@@ -1,54 +1,7 @@
 
 
-class PopularModel {
-  PopularModel(
-      {this.page,
-      this.results,
-      this.totalPages,
-      this.totalResults,
-      this.statusCode,
-      this.statusMessage,
-      this.success = true});
-
-  PopularModel.fromJson(dynamic json) {
-    page = json['page'];
-    if (json['results'] != null) {
-      results = [];
-      json['results'].forEach((v) {
-        results?.add(Results.fromJson(v));
-      });
-    }
-    totalPages = json['total_pages'];
-    statusCode = json['status_code'];
-    statusMessage = json['status_message'];
-    success = json['success'];
-  }
-
-  num? page;
-  List<Results>? results;
-  num? totalPages;
-  num? totalResults;
-  num? statusCode;
-  String? statusMessage;
-  bool? success;
-
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['page'] = page;
-    if (results != null) {
-      map['results'] = results?.map((v) => v.toJson()).toList();
-    }
-    map['total_pages'] = totalPages;
-    map['total_results'] = totalResults;
-    map['status_code'] = statusCode;
-    map['status_message'] = statusMessage;
-    map['success'] = success;
-    return map;
-  }
-}
-
-class Results {
-  Results({
+class WatchListModel {
+  WatchListModel({
     this.adult,
     this.backdropPath,
     this.genreIds,
@@ -65,7 +18,7 @@ class Results {
     this.voteCount,
   });
 
-  Results.fromJson(dynamic json) {
+  WatchListModel.fromJson(dynamic json) {
     adult = json['adult'];
     backdropPath = json['backdrop_path'];
     genreIds = json['genre_ids'] != null ? json['genre_ids'].cast<num>() : [];
@@ -84,7 +37,7 @@ class Results {
 
   bool? adult;
   String? backdropPath;
-  List<num>? genreIds;
+  List<Genres>? genreIds;
   num? id;
   String? originalLanguage;
   String? originalTitle;
@@ -115,5 +68,25 @@ class Results {
     map['vote_count'] = voteCount;
     return map;
   }
-}
 
+}
+class Genres {
+  Genres({
+    this.id,
+    this.name,});
+
+  Genres.fromJson(dynamic json) {
+    id = json['id'];
+    name = json['name'];
+  }
+  num? id;
+  String? name;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['id'] = id;
+    map['name'] = name;
+    return map;
+  }
+
+}
