@@ -123,7 +123,7 @@ class PopularWidget extends StatelessWidget {
                               .textTheme
                               .bodyMedium!
                               .copyWith(
-                                  fontSize: 14, fontWeight: FontWeight.w300),
+                                  fontSize: 14.sp, fontWeight: FontWeight.w300),
                         ),
                       ),
                       SizedBox(

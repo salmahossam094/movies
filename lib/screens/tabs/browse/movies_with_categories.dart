@@ -9,7 +9,7 @@ import 'package:movies/shared/styles/app_colors.dart';
 import '../../../shared/styles/text_styles.dart';
 
 class MovieWithCategoriesScreen extends StatelessWidget {
-  MovieWithCategoriesScreen({super.key});
+  const MovieWithCategoriesScreen({super.key});
 
   static const String routeName = "MovieWithCat";
 
@@ -21,7 +21,7 @@ class MovieWithCategoriesScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           cat.name!,
-          style: quick20White().copyWith(fontSize: 25),
+          style: quick20White().copyWith(fontSize: 25.sp),
         ),
         centerTitle: true,
         backgroundColor: Colors.black,
@@ -42,7 +42,6 @@ class MovieWithCategoriesScreen extends StatelessWidget {
                 ));
               }
               var movies = snapshot.data!.results ?? [];
-              print(movies.length);
               return Expanded(
                 child: ListView.separated(
                     itemBuilder: (context, index) => Padding(

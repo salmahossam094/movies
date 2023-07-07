@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,12 +20,18 @@ class MovieWidget extends StatefulWidget {
 class _MovieWidgetState extends State<MovieWidget> {
   bool isAdded = false;
 
-  bool getMovieList() {
-    FirebaseFunctions.searchMovieById(widget.id).then((value) {
-      isAdded = value;
-      setState(() {});
-    });
-    return isAdded;
+  @override
+  void initState() {
+    super.initState();
+    bool getMovieList() {
+      FirebaseFunctions.searchMovieById(widget.id).then((value) {
+        isAdded = value;
+        setState(() {});
+      });
+      return isAdded;
+    }
+
+    isAdded = getMovieList();
   }
 
   @override
@@ -51,15 +59,16 @@ class _MovieWidgetState extends State<MovieWidget> {
             onPressed: () {
               widget.addToWatch();
               isAdded = !isAdded;
+
               setState(() {});
             },
-            icon: getMovieList()
-                ? Icon(
+            icon: isAdded
+                ? const Icon(
                     Icons.bookmark_added,
                     color: AppColor.secondary,
                     size: 30,
                   )
-                : Icon(
+                : const Icon(
                     Icons.bookmark_add,
                     color: AppColor.grey,
                     size: 30,

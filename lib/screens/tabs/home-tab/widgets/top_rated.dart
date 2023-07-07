@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movies/firebase/firebase_functions.dart';
 import 'package:movies/shared/styles/app_colors.dart';
 
 import '../../../../model/watchlist_model.dart';
@@ -103,6 +104,7 @@ class TopRated extends StatelessWidget {
                                         id: HomeCubit.get(context)
                                             .topRated[index]
                                             .id);
+                                    FirebaseFunctions.addMovieToFire(movie);
                                   },
                                       HomeCubit.get(context)
                                           .topRated[index]
@@ -138,7 +140,7 @@ class TopRated extends StatelessWidget {
                         Text(
                           HomeCubit.get(context).topRated[index].title!,
                           style: poppins15White().copyWith(
-                            fontSize: 10,
+                            fontSize: 10.sp,
                           ),
                           overflow: TextOverflow.fade,
                         ),
@@ -149,7 +151,7 @@ class TopRated extends StatelessWidget {
                           alignment: Alignment.topLeft,
                           child: Text(
                             HomeCubit.get(context).topRated[index].releaseDate!,
-                            style: roboto8gray().copyWith(fontSize: 10),
+                            style: roboto8gray().copyWith(fontSize: 10.sp),
                           ),
                         ),
                         SizedBox(

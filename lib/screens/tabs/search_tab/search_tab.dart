@@ -50,6 +50,7 @@ class _SearchTabState extends State<SearchTab> {
                     borderRadius: BorderRadius.circular(20.r),
                     borderSide: const BorderSide(color: AppColor.primary))),
           ),
+          SizedBox(height: 77.h,),
           FutureBuilder<SearchModel>(
             future: ApiManager.search(movieName),
             builder: (context, snapshot) {
