@@ -3,6 +3,8 @@
 /// total_pages : 352
 /// total_results : 7023
 
+// ignore_for_file: file_names
+
 class SimilarModel {
   SimilarModel({
       this.page, 

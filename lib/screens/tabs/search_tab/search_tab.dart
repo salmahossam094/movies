@@ -9,6 +9,8 @@ import '../../../shared/styles/text_styles.dart';
 import '../../../api/api_manager.dart';
 
 class SearchTab extends StatefulWidget {
+  const SearchTab({super.key});
+
   @override
   State<SearchTab> createState() => _SearchTabState();
 }

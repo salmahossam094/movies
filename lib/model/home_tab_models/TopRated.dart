@@ -3,6 +3,8 @@
 /// total_pages : 561
 /// total_results : 11201
 
+// ignore_for_file: file_names
+
 class TopRated {
   TopRated({
       this.page, 

@@ -37,9 +37,9 @@ class MyApp extends StatelessWidget {
             routes: {
               HomeLayout.routeName: (context) => const HomeLayout(),
               MovieDetails.routeName: (context) => MovieDetails(),
-              SplashScreen.routeName: (context) => SplashScreen(),
+              SplashScreen.routeName: (context) => const SplashScreen(),
               MovieWithCategoriesScreen.routeName: (context) =>
-                  MovieWithCategoriesScreen()
+                  const MovieWithCategoriesScreen()
             },
             theme: MyThemeData.lightTheme,
           );

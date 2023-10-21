@@ -3,6 +3,8 @@
 /// total_pages : 38999
 /// total_results : 779977
 
+// ignore_for_file: file_names
+
 class MovieWithCategory {
   MovieWithCategory({
       this.page, 

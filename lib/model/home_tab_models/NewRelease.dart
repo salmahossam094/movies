@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:movies/model/home_tab_models/PopularModel.dart';
 
 class NewRelease {
