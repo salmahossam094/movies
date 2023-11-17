@@ -20,6 +20,7 @@ class MoreLikeThis extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+
       children: [
         FutureBuilder(
           future: ApiManager.getSimilarMovies(movieId),
@@ -37,17 +38,15 @@ class MoreLikeThis extends StatelessWidget {
             }
             var similar = snapshot.data!.results ?? [];
             return Column(
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 8.0, top: 8.0),
-                  child: Align(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        'More Like This',
-                        style: quick20White(),
-                      )),
-                ),
+                Align(
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      'More Like This',
+                      style: quick20White(),
+                    )),
                 SizedBox(
                   height: 12.h,
                 ),
@@ -58,13 +57,16 @@ class MoreLikeThis extends StatelessWidget {
                         width: 300.w,
                         child: Card(
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.r)),
+                            borderRadius: BorderRadius.circular(10).w,
+                          ),
                           color: const Color(0xFF343534),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Row(
+
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Align(
                                     alignment: Alignment.center,
@@ -76,7 +78,7 @@ class MoreLikeThis extends StatelessWidget {
                                       },
                                       child: ClipRRect(
                                         borderRadius:
-                                            BorderRadius.circular(18.r),
+                                            BorderRadius.circular(18).w,
                                         child: MovieWidget(
                                             similar[index].posterPath ?? '',
                                             () {
@@ -104,7 +106,7 @@ class MoreLikeThis extends StatelessWidget {
                                                   similar[index].voteCount);
                                           FirebaseFunctions.addMovieToFire(
                                               movie);
-                                        },similar[index].id.toString()),
+                                        }, similar[index].id.toString()),
                                       ),
                                     ),
                                   ),
@@ -126,29 +128,38 @@ class MoreLikeThis extends StatelessWidget {
                                   Text(
                                     ' ${similar[index].voteAverage}',
                                     style:
-                                        poppins15White().copyWith(fontSize: 10),
+                                        poppins15White().copyWith(fontSize: 10.sp),
                                   ),
                                 ],
                               ),
                               SizedBox(
                                 height: 2.h,
                               ),
-                              Text(
-                                similar[index].title!,
-                                style: poppins15White().copyWith(
-                                  fontSize: 10,
+                              Padding(
+                                padding: const EdgeInsets.only(left: 5.0,bottom: 5.0).r,
+                                child: Align(
+                                  alignment: Alignment.topLeft,
+                                  child: Text(
+                                    similar[index].title!,
+                                    style: poppins15White().copyWith(
+                                      fontSize: 10.sp,
+                                    ),
+                                    maxLines: 1,
+                                    overflow: TextOverflow.fade,
+                                  ),
                                 ),
-                                maxLines: 1,
-                                overflow: TextOverflow.fade,
                               ),
                               SizedBox(
                                 height: 3.h,
                               ),
-                              Align(
-                                alignment: Alignment.topLeft,
-                                child: Text(
-                                  similar[index].releaseDate!,
-                                  style: roboto8gray().copyWith(fontSize: 10),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 5.0,).r,
+                                child: Align(
+                                  alignment: Alignment.topLeft,
+                                  child: Text(
+                                    similar[index].releaseDate!,
+                                    style: roboto8gray().copyWith(fontSize: 10.sp),
+                                  ),
                                 ),
                               ),
                               SizedBox(

@@ -19,7 +19,7 @@ class _WatchListTabState extends State<WatchListTab> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 75.5.h, horizontal: 17.w),
+      padding: EdgeInsets.symmetric(vertical: 75.5.h, horizontal: 17.w).r,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -39,8 +39,8 @@ class _WatchListTabState extends State<WatchListTab> {
                   color: AppColor.secondary,
                 ));
               } else if (snapshot.hasError) {
-                return const Column(
-                  children: [Text('error')],
+                return  Column(
+                  children: [Text(snapshot.error.toString())],
                 );
               }
               List<WatchListModel> movie =
@@ -140,9 +140,9 @@ class _WatchListTabState extends State<WatchListTab> {
                           ),
                         ),
                         separatorBuilder: (BuildContext context, int index) =>
-                            const Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Divider(
+                             Padding(
+                          padding: const EdgeInsets.all(8.0).r,
+                          child: const Divider(
                             indent: 25,
                             endIndent: 25,
                             color: AppColor.secondary,

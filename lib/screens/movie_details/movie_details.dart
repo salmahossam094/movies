@@ -65,9 +65,9 @@ class MovieDetails extends StatelessWidget {
                             borderRadius: BorderRadius.circular(20)),
                         color: AppColor.primary,
                         child: Padding(
-                          padding: const EdgeInsets.all(12.0),
+                          padding: const EdgeInsets.all(12.0).w,
                           child: ClipRRect(
-                            borderRadius: BorderRadius.circular(20),
+                            borderRadius: BorderRadius.circular(20).w,
                             child: CachedNetworkImage(
                               height: 450.h,
                               width: double.infinity,
@@ -97,7 +97,7 @@ class MovieDetails extends StatelessWidget {
                   height: 12.h,
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(8.0).w,
                   child: Text(
                     results.title ?? '',
                     style: quick20White()
@@ -108,7 +108,7 @@ class MovieDetails extends StatelessWidget {
                   height: 6.h,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 8.0),
+                  padding: const EdgeInsets.only(left: 8.0).r,
                   child: Text(
                     results.releaseDate ?? '',
                     style: roboto8gray()
@@ -119,7 +119,7 @@ class MovieDetails extends StatelessWidget {
                   height: 19.h,
                 ),
                 Container(
-                  padding: const EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.all(10.0).w,
                   height: 250.h,
                   width: double.infinity,
                   color: AppColor.primary,
@@ -142,7 +142,7 @@ class MovieDetails extends StatelessWidget {
                             voteAverage: results.voteAverage,
                             voteCount: results.voteCount);
                         FirebaseFunctions.addMovieToFire(movie);
-                      },results.id.toString())),
+                      }, results.id.toString())),
                       SizedBox(
                         width: 11.w,
                       ),
@@ -161,20 +161,22 @@ class MovieDetails extends StatelessWidget {
                               ),
                               itemBuilder: (BuildContext context, int index) =>
                                   Container(
-                                      padding: const EdgeInsets.all(5),
-                                      margin: const EdgeInsets.all(5),
+                                      padding: const EdgeInsets.all(5).w,
+                                      margin: const EdgeInsets.all(5).w,
                                       decoration: BoxDecoration(
                                           borderRadius:
-                                              BorderRadius.circular(10),
+                                              BorderRadius.circular(10).w,
                                           border: Border.all(
-                                              color: Colors.white70, width: 1)),
+                                            color: Colors.white70,
+                                            width: 1.w,
+                                          )),
                                       child: FittedBox(
                                         fit: BoxFit.scaleDown,
                                         child: Text(
                                           results.genres![index].name!,
                                           style: roboto8gray().copyWith(
                                               color: Colors.white,
-                                              fontSize: 10),
+                                              fontSize: 10.sp),
                                         ),
                                       )),
                             )),
@@ -185,7 +187,7 @@ class MovieDetails extends StatelessWidget {
                                   maxLines: 8,
                                   softWrap: true,
                                   style: poppins15White().copyWith(
-                                    fontSize: 13,
+                                    fontSize: 13.sp,
                                     fontWeight: FontWeight.w100,
                                     overflow: TextOverflow.ellipsis,
                                   ),
@@ -197,9 +199,9 @@ class MovieDetails extends StatelessWidget {
                             ),
                             Row(
                               children: [
-                                Icon(
+                                const Icon(
                                   Icons.star_rate,
-                                  size: 28.sp,
+                                  size: 28,
                                   color: AppColor.secondary,
                                 ),
                                 SizedBox(

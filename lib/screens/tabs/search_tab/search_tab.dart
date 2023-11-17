@@ -4,9 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies/screens/movie_details/movie_details.dart';
 import 'package:movies/shared/styles/app_colors.dart';
 
+import '../../../api/api_manager.dart';
 import '../../../model/SearchModel.dart';
 import '../../../shared/styles/text_styles.dart';
-import '../../../api/api_manager.dart';
 
 class SearchTab extends StatefulWidget {
   const SearchTab({super.key});
@@ -22,7 +22,7 @@ class _SearchTabState extends State<SearchTab> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(8.0).w,
       child: Column(
         children: [
           TextFormField(
@@ -44,16 +44,18 @@ class _SearchTabState extends State<SearchTab> {
                   size: 30,
                 ),
                 focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30.r),
+                    borderRadius: BorderRadius.circular(30.r).w,
                     borderSide: const BorderSide(color: Colors.white)),
                 enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30.r),
+                    borderRadius: BorderRadius.circular(30.r).w,
                     borderSide: const BorderSide(color: Colors.white)),
                 border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20.r),
+                    borderRadius: BorderRadius.circular(20.r).w,
                     borderSide: const BorderSide(color: AppColor.primary))),
           ),
-          SizedBox(height: 77.h,),
+          SizedBox(
+            height: 77.h,
+          ),
           FutureBuilder<SearchModel>(
             future: ApiManager.search(movieName),
             builder: (context, snapshot) {
@@ -79,7 +81,7 @@ class _SearchTabState extends State<SearchTab> {
                         color: Colors.grey,
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(20.0),
+                        padding: const EdgeInsets.all(20.0).w,
                         child: Text(
                           'No movies Founded',
                           style: quick20White(),
@@ -91,87 +93,88 @@ class _SearchTabState extends State<SearchTab> {
               }
               var result = snapshot.data?.results ?? [];
               return Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: ListView.separated(
-                          itemCount: result.length,
-                          itemBuilder: (context, index) {
-                            return InkWell(
-                              onTap: () => Navigator.pushNamed(context, MovieDetails.routeName,arguments: result[index].id),
-                              child: Row(
+                child: SizedBox(
+                  height: 500.h,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0).w,
+                    child: ListView.separated(
+                      itemCount: result.length,
+                      itemBuilder: (context, index) {
+                        return InkWell(
+                          onTap: () => Navigator.pushNamed(
+                              context, MovieDetails.routeName,
+                              arguments: result[index].id),
+                          child: Row(
+                            children: [
+                              CachedNetworkImage(
+                                height: 95.h,
+                                width: 135.w,
+                                fit: BoxFit.cover,
+                                imageUrl:
+                                    'https://image.tmdb.org/t/p/original${result[index].backdropPath}',
+                                progressIndicatorBuilder:
+                                    (context, url, downloadProgress) => Center(
+                                  child: CircularProgressIndicator(
+                                    value: downloadProgress.progress,
+                                    color: AppColor.secondary,
+                                  ),
+                                ),
+                                errorWidget: (context, url, error) =>
+                                    const Icon(Icons.error),
+                              ),
+                              SizedBox(
+                                width: 10.w,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  CachedNetworkImage(
-                                    height: 95.h,
-                                    width: 135.w,
-                                    fit: BoxFit.cover,
-                                    imageUrl:
-                                        'https://image.tmdb.org/t/p/original${result[index].backdropPath}',
-                                    progressIndicatorBuilder:
-                                        (context, url, downloadProgress) =>
-                                            Center(
-                                      child: CircularProgressIndicator(
-                                        value: downloadProgress.progress,
-                                        color: AppColor.secondary,
+                                  SizedBox(
+                                    width:MediaQuery.of(context).size.width *.4,
+                                    child: Text(
+                                      result[index].title!,
+                                      style: quick20White().copyWith(
+                                        fontWeight: FontWeight.w100,
+                                        fontSize: 13.sp,
+
                                       ),
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 1,
+                                      softWrap: true,
                                     ),
-                                    errorWidget: (context, url, error) =>
-                                        const Icon(Icons.error),
                                   ),
                                   SizedBox(
-                                    width: 10.w,
+                                    height: 3.h,
                                   ),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        result[index].title!,
-                                        style: quick20White().copyWith(
-                                            fontWeight: FontWeight.w100,
-                                            fontSize: 14.sp),
-                                        maxLines: 1,
-                                        overflow: TextOverflow.clip,
-                                        textScaleFactor: 0.81,
-                                      ),
-                                      SizedBox(
-                                        height: 3.h,
-                                      ),
-                                      Text(
-                                        result[index].releaseDate!,
-                                        style: roboto8gray()
-                                            .copyWith(fontSize: 13.sp),
-                                      ),
-                                      SizedBox(
-                                        height: 3.h,
-                                      ),
-                                      Text(
-                                        result[index].originalLanguage!,
-                                        style: roboto8gray()
-                                            .copyWith(fontSize: 13.sp),
-                                      )
-                                    ],
+                                  Text(
+                                    result[index].releaseDate!,
+                                    style:
+                                        roboto8gray().copyWith(fontSize: 13.sp),
+                                  ),
+                                  SizedBox(
+                                    height: 3.h,
+                                  ),
+                                  Text(
+                                    result[index].originalLanguage!,
+                                    style:
+                                        roboto8gray().copyWith(fontSize: 13.sp),
                                   )
                                 ],
-                              ),
-                            );
-                          },
-                          separatorBuilder: (BuildContext context, int index) =>
-                              const Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Divider(
-                              indent: 25,
-                              endIndent: 25,
-                              color: AppColor.secondary,
-                              thickness: 2,
-                            ),
+                              )
+                            ],
                           ),
+                        );
+                      },
+                      separatorBuilder: (BuildContext context, int index) =>
+                          const Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Divider(
+                          indent: 25,
+                          endIndent: 25,
+                          color: AppColor.secondary,
+                          thickness: 2,
                         ),
-                      )
-                    ],
+                      ),
+                    ),
                   ),
                 ),
               );

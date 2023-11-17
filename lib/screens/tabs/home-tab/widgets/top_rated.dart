@@ -17,12 +17,12 @@ class TopRated extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: AppColor.primary,
-      padding: const EdgeInsets.all(8).h,
+      padding: const EdgeInsets.all(8).w,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 8.0, top: 8.0),
+            padding: const EdgeInsets.only(left: 8.0, top: 8.0).r,
             child: Align(
                 alignment: Alignment.topLeft,
                 child: Text(
@@ -40,7 +40,7 @@ class TopRated extends StatelessWidget {
                   width: 300.w,
                   child: Card(
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.r)),
+                        borderRadius: BorderRadius.circular(10.r).w),
                     color: const Color(0xFF343534),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -59,7 +59,8 @@ class TopRated extends StatelessWidget {
                                           .id);
                                 },
                                 child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(18.r),
+                                  borderRadius: BorderRadius.circular(18.r).w
+                                  ,
                                   child: MovieWidget(
                                       HomeCubit.get(context)
                                           .topRated[index]
@@ -105,7 +106,7 @@ class TopRated extends StatelessWidget {
                                             .topRated[index]
                                             .id);
                                     FirebaseFunctions.addMovieToFire(movie);
-                                    
+
                                   },
                                       HomeCubit.get(context)
                                           .topRated[index]
@@ -131,25 +132,28 @@ class TopRated extends StatelessWidget {
                             ),
                             Text(
                               ' ${HomeCubit.get(context).topRated[index].voteAverage}',
-                              style: poppins15White().copyWith(fontSize: 10),
+                              style: poppins15White().copyWith(fontSize: 10.sp),
                             ),
                           ],
                         ),
                         SizedBox(
                           height: 2.h,
                         ),
-                        Text(
-                          HomeCubit.get(context).topRated[index].title!,
-                          style: poppins15White().copyWith(
-                            fontSize: 10.sp,
+                        Padding(
+                          padding: const EdgeInsets.only(left: 5.0).r,
+                          child: Text(
+                            HomeCubit.get(context).topRated[index].title!,
+                            style: poppins15White().copyWith(
+                              fontSize: 10.sp,
+                            ),
+                            overflow: TextOverflow.fade,
                           ),
-                          overflow: TextOverflow.fade,
                         ),
                         SizedBox(
                           height: 3.h,
                         ),
-                        Align(
-                          alignment: Alignment.topLeft,
+                        Padding(
+                          padding: const EdgeInsets.only(left: 5.0,top: 5.0).r,
                           child: Text(
                             HomeCubit.get(context).topRated[index].releaseDate!,
                             style: roboto8gray().copyWith(fontSize: 10.sp),
