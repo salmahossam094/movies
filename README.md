@@ -1,6 +1,6 @@
-![image](https://github.com/salmahossam094/movies/assets/90824795/b78384fc-3e35-4cfc-ab92-54499ee13061)# movies
 
-Flutter MultiPlatform Movies App
+
+# Flutter MultiPlatform Movies App
 
 ## Application Features:
 🎬Explore the lastest movies releases, upcoming movies and Top Rated movies.
