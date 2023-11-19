@@ -1,16 +1,18 @@
-# movies
 
-A new Flutter project.
 
-## Getting Started
+# Flutter MultiPlatform Movies App
 
-This project is a starting point for a Flutter application.
+## Application Features:<br>
+🎬Explore the lastest movies releases, upcoming movies and Top Rated movies.<br>
+🎬Discover movies similar to your preferences and recive recommendations.<br>
+🎬Browse movies across different categories.<br>
+🎬Add your favorite movies to your Watchlist.<br>
+🎬Easily search for specific movie.<br>
+🎬Access detailed information for each movie.<br>
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Features are implemented using:
+● Bloc(cubit) state management.<br>
+● Firebase for storing/deleting movies in/from the watchlist.<br>
+● API (https://developer.themoviedb.org/docs).<br>
+● Networking (http).<br>
+● Responsive design (flutter_Screenutil).<br>
