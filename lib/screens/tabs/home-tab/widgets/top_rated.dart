@@ -40,13 +40,14 @@ class TopRated extends StatelessWidget {
                   width: 300.w,
                   child: Card(
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.r).w),
+                        borderRadius: BorderRadius.circular(10).w),
                     color: const Color(0xFF343534),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Align(
                               alignment: Alignment.center,
@@ -59,7 +60,7 @@ class TopRated extends StatelessWidget {
                                           .id);
                                 },
                                 child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(18.r).w
+                                  borderRadius: BorderRadius.circular(18).w
                                   ,
                                   child: MovieWidget(
                                       HomeCubit.get(context)
@@ -141,12 +142,15 @@ class TopRated extends StatelessWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 5.0).r,
-                          child: Text(
-                            HomeCubit.get(context).topRated[index].title!,
-                            style: poppins15White().copyWith(
-                              fontSize: 10.sp,
+                          child: Align(
+                            alignment: Alignment.topLeft,
+                            child: Text(
+                              HomeCubit.get(context).topRated[index].title!,
+                              style: poppins15White().copyWith(
+                                fontSize: 10.sp,
+                              ),
+                              overflow: TextOverflow.fade,
                             ),
-                            overflow: TextOverflow.fade,
                           ),
                         ),
                         SizedBox(
@@ -154,9 +158,12 @@ class TopRated extends StatelessWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 5.0,top: 5.0).r,
-                          child: Text(
-                            HomeCubit.get(context).topRated[index].releaseDate!,
-                            style: roboto8gray().copyWith(fontSize: 10.sp),
+                          child: Align(
+                            alignment: Alignment.topLeft,
+                            child: Text(
+                              HomeCubit.get(context).topRated[index].releaseDate!,
+                              style: roboto8gray().copyWith(fontSize: 10.sp),
+                            ),
                           ),
                         ),
                         SizedBox(

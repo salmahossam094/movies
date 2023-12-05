@@ -50,17 +50,19 @@ class BrowseTab extends StatelessWidget {
                 children: [
                   Expanded(
                     child: GridView.builder(
+                      scrollDirection: Axis.vertical,
                       itemCount: BrowseCubit.get(context).categories.length,
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
+                            childAspectRatio: 4.9/5
                       ),
                       itemBuilder: (context, index) {
                         return InkWell(
                           onTap: () => Navigator.pushNamed(
                               context, MovieWithCategoriesScreen.routeName,
-                              arguments: BrowseCubit.get(context)
-                                  .categories[index]),
+                              arguments:
+                                  BrowseCubit.get(context).categories[index]),
                           child: Stack(
                             alignment: Alignment.center,
                             children: [

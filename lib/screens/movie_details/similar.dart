@@ -65,7 +65,6 @@ class MoreLikeThis extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Row(
-
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Align(

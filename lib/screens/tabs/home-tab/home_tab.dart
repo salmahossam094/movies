@@ -75,9 +75,7 @@ class HomeTab extends StatelessWidget {
                   ),
                 );
               }
-              if (state is GetHomeMovieSuccessState) {
-
-              }
+              if (state is GetHomeMovieSuccessState) {}
             }, builder: (context, state) {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -85,28 +83,37 @@ class HomeTab extends StatelessWidget {
                   Column(
                     children: [
                       HomeCubit.get(context).popular.isEmpty
-                          ? const Center(
-                              child: CircularProgressIndicator(
-                              color: AppColor.secondary,
-                            ))
+                          ? SizedBox(
+                              height: 200.h,
+                              child: const Center(
+                                  child: CircularProgressIndicator(
+                                color: AppColor.secondary,
+                              )),
+                            )
                           : const PopularWidget(),
                       SizedBox(
                         height: 24.h,
                       ),
                       HomeCubit.get(context).newRe.isEmpty
-                          ? const Center(
-                              child: CircularProgressIndicator(
-                              color: AppColor.secondary,
-                            ))
+                          ? SizedBox(
+                              height: 200.h,
+                              child: const Center(
+                                  child: CircularProgressIndicator(
+                                color: AppColor.secondary,
+                              )),
+                            )
                           : const UpComing(),
                       SizedBox(
                         height: 30.h,
                       ),
                       HomeCubit.get(context).topRated.isEmpty
-                          ? const Center(
-                              child: CircularProgressIndicator(
-                              color: AppColor.secondary,
-                            ))
+                          ? SizedBox(
+                              height: 200.h,
+                              child: const Center(
+                                  child: CircularProgressIndicator(
+                                color: AppColor.secondary,
+                              )),
+                            )
                           : Container(
                               color: AppColor.primary,
                               padding: const EdgeInsets.all(8),

@@ -23,166 +23,167 @@ class _SearchTabState extends State<SearchTab> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0).w,
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            TextFormField(
-              textInputAction: TextInputAction.search,
-              onChanged: (value) {
-                setState(() {
-                  movieName = value;
-                });
-              },
+      child: Column(
+        children: [
+          TextFormField(
+            textInputAction: TextInputAction.search,
+            onChanged: (value) {
+              setState(() {
+                movieName = value;
+              });
+            },
 
-              // onTap: () =>
-              //     showSearch(context: context, delegate: MySearchDelegate()),
-              controller: searchController,
-              style: poppins15White(),
-              decoration: InputDecoration(
-                  prefixIcon: const Icon(
-                    Icons.search_sharp,
-                    color: Colors.white,
-                    size: 30,
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30.r).w,
-                      borderSide: const BorderSide(color: Colors.white)),
-                  enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30.r).w,
-                      borderSide: const BorderSide(color: Colors.white)),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.r).w,
-                      borderSide: const BorderSide(color: AppColor.primary))),
-            ),
-            SizedBox(
-              height: 77.h,
-            ),
-            FutureBuilder<SearchModel>(
-              future: ApiManager.search(movieName),
-              builder: (context, snapshot) {
-                if (snapshot.hasError) {
-                  return const Column(
-                    children: [Text('error')],
-                  );
-                }
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(
-                      child: CircularProgressIndicator(
-                    color: AppColor.secondary,
-                  ));
-                }
-                if (snapshot.data!.totalResults == 0) {
-                  return Expanded(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Icon(
-                          Icons.local_movies,
-                          size: 100,
-                          color: Colors.grey,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(20.0).w,
-                          child: Text(
-                            'No movies Founded',
-                            style: quick20White(),
-                          ),
-                        )
-                      ],
-                    ),
-                  );
-                }
-                var result = snapshot.data?.results ?? [];
+            // onTap: () =>
+            //     showSearch(context: context, delegate: MySearchDelegate()),
+            controller: searchController,
+            style: poppins15White(),
+            decoration: InputDecoration(
+                prefixIcon: const Icon(
+                  Icons.search_sharp,
+                  color: Colors.white,
+                  size: 30,
+                ),
+                focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30.r).w,
+                    borderSide: const BorderSide(color: Colors.white)),
+                enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30.r).w,
+                    borderSide: const BorderSide(color: Colors.white)),
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20.r).w,
+                    borderSide: const BorderSide(color: AppColor.primary))),
+          ),
+          SizedBox(
+            height: 30.h,
+          ),
+          FutureBuilder<SearchModel>(
+            future: ApiManager.search(movieName),
+            builder: (context, snapshot) {
+              if (snapshot.hasError) {
+                return const Column(
+                  children: [Text('error')],
+                );
+              }
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(
+                    child: CircularProgressIndicator(
+                  color: AppColor.secondary,
+                ));
+              }
+              if (snapshot.data!.totalResults == 0) {
                 return Expanded(
-                  child: SizedBox(
-                    height: 500.h,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0).w,
-                      child: ListView.separated(
-                        itemCount: result.length,
-                        itemBuilder: (context, index) {
-                          return InkWell(
-                            onTap: () => Navigator.pushNamed(
-                                context, MovieDetails.routeName,
-                                arguments: result[index].id),
-                            child: Row(
-                              children: [
-                                CachedNetworkImage(
-                                  height: 95.h,
-                                  width: 135.w,
-                                  fit: BoxFit.cover,
-                                  imageUrl:
-                                      'https://image.tmdb.org/t/p/original${result[index].backdropPath}',
-                                  progressIndicatorBuilder:
-                                      (context, url, downloadProgress) => Center(
-                                    child: CircularProgressIndicator(
-                                      value: downloadProgress.progress,
-                                      color: AppColor.secondary,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Icon(
+                        Icons.local_movies,
+                        size: 100,
+                        color: Colors.grey,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(20.0).w,
+                        child: Text(
+                          'No movies Founded',
+                          style: quick20White(),
+                        ),
+                      )
+                    ],
+                  ),
+                );
+              }
+              var result = snapshot.data?.results ?? [];
+              return Expanded(
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.4,
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                      left: 8.0,
+                      right: 8.0,
+                    ).w,
+                    child: ListView.separated(
+                      itemCount: result.length,
+                      itemBuilder: (context, index) {
+                        return InkWell(
+                          onTap: () => Navigator.pushNamed(
+                              context, MovieDetails.routeName,
+                              arguments: result[index].id),
+                          child: Row(
+                            children: [
+                              CachedNetworkImage(
+                                height: 95.h,
+                                width: 135.w,
+                                fit: BoxFit.cover,
+                                imageUrl:
+                                    'https://image.tmdb.org/t/p/original${result[index].backdropPath}',
+                                progressIndicatorBuilder:
+                                    (context, url, downloadProgress) => Center(
+                                  child: CircularProgressIndicator(
+                                    value: downloadProgress.progress,
+                                    color: AppColor.secondary,
+                                  ),
+                                ),
+                                errorWidget: (context, url, error) =>
+                                    const Icon(Icons.error),
+                              ),
+                              SizedBox(
+                                width: 10.w,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    width:
+                                        MediaQuery.of(context).size.width * .4,
+                                    child: Text(
+                                      result[index].title!,
+                                      style: quick20White().copyWith(
+                                        fontWeight: FontWeight.w100,
+                                        fontSize: 13.sp,
+                                      ),
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 1,
+                                      softWrap: true,
                                     ),
                                   ),
-                                  errorWidget: (context, url, error) =>
-                                      const Icon(Icons.error),
-                                ),
-                                SizedBox(
-                                  width: 10.w,
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    SizedBox(
-                                      width:MediaQuery.of(context).size.width *.4,
-                                      child: Text(
-                                        result[index].title!,
-                                        style: quick20White().copyWith(
-                                          fontWeight: FontWeight.w100,
-                                          fontSize: 13.sp,
-
-                                        ),
-                                        overflow: TextOverflow.ellipsis,
-                                        maxLines: 1,
-                                        softWrap: true,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 3.h,
-                                    ),
-                                    Text(
-                                      result[index].releaseDate!,
-                                      style:
-                                          roboto8gray().copyWith(fontSize: 13.sp),
-                                    ),
-                                    SizedBox(
-                                      height: 3.h,
-                                    ),
-                                    Text(
-                                      result[index].originalLanguage!,
-                                      style:
-                                          roboto8gray().copyWith(fontSize: 13.sp),
-                                    )
-                                  ],
-                                )
-                              ],
-                            ),
-                          );
-                        },
-                        separatorBuilder: (BuildContext context, int index) =>
-                            const Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Divider(
-                            indent: 25,
-                            endIndent: 25,
-                            color: AppColor.secondary,
-                            thickness: 2,
+                                  SizedBox(
+                                    height: 3.h,
+                                  ),
+                                  Text(
+                                    result[index].releaseDate!,
+                                    style:
+                                        roboto8gray().copyWith(fontSize: 13.sp),
+                                  ),
+                                  SizedBox(
+                                    height: 3.h,
+                                  ),
+                                  Text(
+                                    result[index].originalLanguage!,
+                                    style:
+                                        roboto8gray().copyWith(fontSize: 13.sp),
+                                  )
+                                ],
+                              )
+                            ],
                           ),
+                        );
+                      },
+                      separatorBuilder: (BuildContext context, int index) =>
+                          const Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Divider(
+                          indent: 25,
+                          endIndent: 25,
+                          color: AppColor.secondary,
+                          thickness: 2,
                         ),
                       ),
                     ),
                   ),
-                );
-              },
-            )
-          ],
-        ),
+                ),
+              );
+            },
+          )
+        ],
       ),
     );
     // return BlocProvider(
