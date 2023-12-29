@@ -54,9 +54,7 @@ class BrowseTab extends StatelessWidget {
                       itemCount: BrowseCubit.get(context).categories.length,
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                            childAspectRatio: 4.9/5
-                      ),
+                              crossAxisCount: 2, childAspectRatio: 4.9 / 5),
                       itemBuilder: (context, index) {
                         return InkWell(
                           onTap: () => Navigator.pushNamed(

@@ -39,7 +39,7 @@ class _WatchListTabState extends State<WatchListTab> {
                   color: AppColor.secondary,
                 ));
               } else if (snapshot.hasError) {
-                return  Column(
+                return Column(
                   children: [Text(snapshot.error.toString())],
                 );
               }
@@ -99,14 +99,18 @@ class _WatchListTabState extends State<WatchListTab> {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    movie[index].title!,
-                                    style: quick20White().copyWith(
-                                        fontWeight: FontWeight.w100,
-                                        fontSize: 14.sp),
-                                    maxLines: 1,
-                                    overflow: TextOverflow.clip,
-                                    textScaleFactor: 0.81,
+                                  SizedBox(
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.4,
+                                    child: Text(
+                                      movie[index].title!,
+                                      style: quick20White().copyWith(
+                                          fontWeight: FontWeight.w100,
+                                          fontSize: 14.sp),
+                                      maxLines: 1,
+                                      overflow: TextOverflow.clip,
+                                      textScaleFactor: 0.81,
+                                    ),
                                   ),
                                   SizedBox(
                                     height: 3.h,
@@ -140,7 +144,7 @@ class _WatchListTabState extends State<WatchListTab> {
                           ),
                         ),
                         separatorBuilder: (BuildContext context, int index) =>
-                             Padding(
+                            Padding(
                           padding: const EdgeInsets.all(8.0).r,
                           child: const Divider(
                             indent: 25,

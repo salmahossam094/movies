@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies/model/BrowseModel.dart';
 import 'package:movies/api/api_manager.dart';
+import 'package:movies/model/BrowseModel.dart';
 import 'package:movies/screens/movie_details/movie_details.dart';
 import 'package:movies/shared/styles/app_colors.dart';
 
@@ -27,6 +27,7 @@ class MovieWithCategoriesScreen extends StatelessWidget {
         backgroundColor: Colors.black,
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           FutureBuilder(
             future: ApiManager.getMoviesCat(cat.id!),
@@ -75,14 +76,19 @@ class MovieWithCategoriesScreen extends StatelessWidget {
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(
-                                      movies[index].title!,
-                                      style: quick20White().copyWith(
-                                          fontWeight: FontWeight.w100,
-                                          fontSize: 14.sp),
-                                      maxLines: 1,
-                                      overflow: TextOverflow.clip,
-                                      textScaleFactor: 0.81,
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.4,
+                                      child: Text(
+                                        movies[index].title!,
+                                        style: quick20White().copyWith(
+                                            fontWeight: FontWeight.w100,
+                                            fontSize: 14.sp),
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
+                                        softWrap: true,
+                                        textScaleFactor: 0.81,
+                                      ),
                                     ),
                                     SizedBox(
                                       height: 3.h,
