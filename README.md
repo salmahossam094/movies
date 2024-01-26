@@ -1,4 +1,3 @@
-![search tab](https://github.com/salmahossam094/movies/assets/90824795/6d94df63-e3f5-471b-98ce-bab7bb2391b0)
 
 # Flutter MultiPlatform Movies App
 
