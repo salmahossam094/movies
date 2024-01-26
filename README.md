@@ -1,4 +1,4 @@
-
+![search tab](https://github.com/salmahossam094/movies/assets/90824795/6d94df63-e3f5-471b-98ce-bab7bb2391b0)
 
 # Flutter MultiPlatform Movies App
 
@@ -16,3 +16,21 @@
 ● API (https://developer.themoviedb.org/docs).<br>
 ● Networking (http).<br>
 ● Responsive design (flutter_Screenutil).<br>
+## Home Tab
+![home tab](https://github.com/salmahossam094/movies/assets/90824795/0d7f4e80-f4b8-4dda-90a1-34bc9bcb7e34)
+## Search Tab
+![search tab](https://github.com/salmahossam094/movies/assets/90824795/3200b2a7-9677-4885-95af-57b8dae3aa5d)
+## Browse Tab
+![browse tab](https://github.com/salmahossam094/movies/assets/90824795/0a4d0c8c-c676-478d-a616-4e1245f61bf4)
+## Browse Details
+![browse details ](https://github.com/salmahossam094/movies/assets/90824795/2d7e7c23-70a4-4122-95cf-4de79bd8caf2)
+## Watch List Tab
+![watchlist tab](https://github.com/salmahossam094/movies/assets/90824795/5d9b877c-e6d6-475b-90d7-6f5990a8d858)
+## Movie Details
+![movie details](https://github.com/salmahossam094/movies/assets/90824795/050d2880-b357-4925-819f-53526f646038)
+
+
+
+
+
+
